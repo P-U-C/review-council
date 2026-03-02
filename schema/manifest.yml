@@ -1,0 +1,27 @@
+# PR Review Manifest — schema v1
+# Include in PR body or as a generated artifact.
+# Required. Missing manifest → human-required verdict.
+
+manifest_version: "1"
+goal: "One sentence: what change is intended"
+why: "Why this is needed — what problem it solves"
+
+expected_behavior_change:
+  - "What should now happen that did not happen before"
+  - "What should no longer happen"
+
+non_goals:
+  - "What this PR explicitly does not do"
+
+assumptions:
+  - "Assumption the author is making that reviewers should challenge"
+
+risks:
+  - "Known risks or edge cases the author is aware of"
+
+rollback: "How to revert safely"
+
+test_evidence:
+  - "Unit tests added: test_X, test_Y"
+
+scope_declaration: "Files intentionally changed | Files changed as side effect"
