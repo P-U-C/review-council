@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "title": "Finding",
+  "version": "0.4",
+  "type": "object",
+  "required": ["finding_id","reviewer","reviewer_version","pr_number","repo","severity","disposition","category","finding","evidence","confidence","pass_number"],
+  "properties": {
+    "finding_id": {"type": "string", "pattern": "^f_[a-f0-9]{8}_\\d+$"},
+    "reviewer": {"type": "string", "enum": ["correctness","epistemics","trading-logic","security","reliability","architect"]},
+    "reviewer_version": {"type": "string"},
+    "manifest_version": {"type": "string"},
+    "pr_number": {"type": "integer"},
+    "repo": {"type": "string"},
+    "file": {"type": "string"},
+    "start_line": {"type": "integer"},
+    "end_line": {"type": "integer"},
+    "severity": {"type": "string", "enum": ["low","medium","high","critical"]},
+    "disposition": {"type": "string", "enum": ["note","concern","block"]},
+    "category": {"type": "string", "enum": ["logic","test-gap","spec-drift","assumption","security","debt","contract-violation"]},
+    "finding": {"type": "string"},
+    "evidence": {
+      "type": "object",
+      "required": ["type","excerpt","why_it_matters"],
+      "properties": {
+        "type": {"type": "string", "enum": ["diff_line","test_gap","assumption_gap","policy_match","manifest_divergence"]},
+        "excerpt": {"type": "string"},
+        "why_it_matters": {"type": "string"}
+      }
+    },
+    "suggestion": {"type": "string"},
+    "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+    "pass_number": {"type": "integer", "enum": [1, 2]}
+  }
+}
