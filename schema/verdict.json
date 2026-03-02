@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "title": "Verdict",
+  "version": "0.4",
+  "type": "object",
+  "required": ["verdict_id","task_key","pr_number","repo","verdict","reviewers_fired","timestamp"],
+  "properties": {
+    "verdict_id": {"type": "string"},
+    "task_key": {"type": "string"},
+    "pr_number": {"type": "integer"},
+    "repo": {"type": "string"},
+    "verdict": {"type": "string", "enum": ["pass","concern","block","human-required","insufficient-evidence"]},
+    "reviewers_fired": {"type": "array", "items": {"type": "string"}},
+    "finding_ids": {"type": "array", "items": {"type": "string"}},
+    "total_findings": {"type": "integer"},
+    "findings_truncated": {"type": "integer"},
+    "reviewer_conflicts": {"type": "array"},
+    "gate_trigger": {"type": ["string","null"]},
+    "block_reason": {"type": ["string","null"]},
+    "label_applied": {"type": "string"},
+    "merge_blocked": {"type": "boolean"},
+    "manifest_present": {"type": "boolean"},
+    "manifest_version": {"type": ["string","null"]},
+    "review_duration_ms": {"type": "integer"},
+    "diff_size_lines": {"type": "integer"},
+    "timestamp": {"type": "string", "format": "date-time"}
+  }
+}
